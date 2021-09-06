@@ -1,0 +1,22 @@
+// 参考：http://jscript.zouri.jp/Source/MouseCtrl.html
+
+
+//  Shell関連の操作を提供するオブジェクトを取得
+var sh = new ActiveXObject( "WScript.Shell" );
+
+// マウス移動位置
+var x = ("" + Math.random() * 1000).substring(0,3);
+var y = ("" + Math.random() * 1000).substring(0,3);
+
+var command = "rundll32.exe MouseEmulator.dll, _SetMouseXY@16 " + x + ", " + y;
+
+
+//  DLLファイルから関数を呼び出し、マウスポインタの位置を設定
+sh.Run(command );
+
+// 20秒停止
+// WScript.Sleep( 1000 * 20 );
+// WScript.Echo( "終了" );
+
+//  オブジェクトを解放
+sh = null;
